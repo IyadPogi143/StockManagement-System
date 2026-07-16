@@ -1,4 +1,4 @@
-package edu.cit.Macopia.StockManagement_System.dto;
+package edu.cit.Macopia.StockManagement_System.features.auth.login;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AuthLoginRequest {
+public class LoginRequest {
 
     @NotBlank(message = "Username is required")
     private String username;

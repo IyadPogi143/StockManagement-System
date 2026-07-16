@@ -1,4 +1,4 @@
-package edu.cit.Macopia.StockManagement_System.dto;
+package edu.cit.Macopia.StockManagement_System.features.auth.register;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AuthRegisterRequest {
+public class RegisterRequest {
 
     @NotBlank(message = "First name is required")
     private String firstName;

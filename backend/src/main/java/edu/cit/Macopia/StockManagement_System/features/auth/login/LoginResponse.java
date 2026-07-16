@@ -1,11 +1,11 @@
-package edu.cit.Macopia.StockManagement_System.dto;
+package edu.cit.Macopia.StockManagement_System.features.auth.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class AuthResponse {
+public class LoginResponse {
     private Long userId;
     private String firstName;
     private String lastName;
