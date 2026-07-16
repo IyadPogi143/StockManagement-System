@@ -1,4 +1,4 @@
-package edu.cit.Macopia.StockManagement_System.entity;
+package edu.cit.Macopia.StockManagement_System.common.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package edu.cit.Macopia.StockManagement_System.config;
+package edu.cit.Macopia.StockManagement_System.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

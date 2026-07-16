@@ -1,6 +1,6 @@
-package edu.cit.Macopia.StockManagement_System.repository;
+package edu.cit.Macopia.StockManagement_System.common.repository;
 
-import edu.cit.Macopia.StockManagement_System.entity.User;
+import edu.cit.Macopia.StockManagement_System.common.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
