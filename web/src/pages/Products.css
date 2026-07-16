@@ -1,0 +1,227 @@
+.prod-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.prod-nav-btn {
+  background: transparent;
+  border: 1.5px solid var(--line-on-ink);
+  color: #fff;
+  padding: 9px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.prod-nav-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.prod-primary-btn {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.prod-primary-btn:hover {
+  background: var(--brand-dark);
+}
+
+.prod-primary-btn:disabled {
+  opacity: 0.55;
+}
+
+.prod-secondary-btn {
+  background: #fff;
+  border: 1.5px solid var(--steel-line);
+  color: var(--ink-soft);
+  padding: 11px 18px;
+  border-radius: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.prod-secondary-btn:hover {
+  background: var(--canvas-alt);
+}
+
+.prod-row-low {
+  background: var(--status-rejected-bg);
+}
+
+/* Status pills now render through the shared .stamp component (see index.css) */
+.prod-status-pill {
+  display: inline-block;
+}
+
+.prod-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prod-qty-controls button {
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  border: 1px solid var(--steel-line);
+  background: #fff;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.prod-qty-controls button:hover:not(:disabled) {
+  background: var(--canvas-alt);
+}
+
+.prod-qty-controls button:disabled {
+  opacity: 0.4;
+}
+
+.prod-qty-controls span {
+  font-family: var(--font-mono);
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.prod-actions-cell {
+  white-space: nowrap;
+}
+
+.prod-link-btn {
+  background: none;
+  border: none;
+  color: var(--brand-dark);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+}
+
+.prod-link-btn:hover {
+  text-decoration: underline;
+}
+
+.prod-link-danger {
+  color: var(--status-rejected);
+}
+
+/* Modal (retained for the review-decision dialog on ReviewRequests.jsx) */
+.prod-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 31, 39, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.prod-modal {
+  background: var(--paper-card);
+  border: 1px solid var(--steel-line);
+  border-radius: var(--radius);
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.prod-modal-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.prod-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prod-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.prod-form input,
+.prod-form textarea,
+.prod-form select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 12px;
+  border: 1.5px solid var(--steel-line);
+  border-radius: 4px;
+  color: var(--text);
+  background: #fff;
+}
+
+.prod-form input:focus,
+.prod-form textarea:focus,
+.prod-form select:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+
+.prod-form input:disabled {
+  background: var(--canvas-alt);
+  color: var(--steel);
+}
+
+.prod-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.prod-field-error {
+  color: var(--status-rejected);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.prod-form-error {
+  background: var(--status-rejected-bg);
+  color: var(--status-rejected);
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.prod-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .prod-form-row {
+    grid-template-columns: 1fr;
+  }
+  .prod-header-row {
+    flex-direction: column;
+  }
+}
