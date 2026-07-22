@@ -1,16 +1,16 @@
 .dash-wrapper {
   min-height: 100vh;
-  background: #fafbfc;
+  background: var(--canvas);
 }
 
 .dash-topbar {
-  background: linear-gradient(155deg, #0f1729 0%, #1a2540 100%);
+  background: var(--ink);
   color: #fff;
-  padding: 20px 48px;
+  padding: 18px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  border-bottom: 3px solid var(--brand);
 }
 
 .dash-logo {
@@ -20,142 +20,176 @@
 }
 
 .dash-logo-icon {
-  width: 38px;
-  height: 38px;
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  background: var(--brand);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
 }
 
 .dash-logo-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
 }
 
 .dash-logo-text {
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: 1.5px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 2.5px;
 }
 
 .dash-user-info {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .dash-role-badge {
-  background: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 20px;
+  font-family: var(--font-mono);
+  background: var(--brand-tint);
+  color: var(--brand-dark);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border: 1.5px solid var(--brand);
+  border-radius: 3px;
   text-transform: uppercase;
   letter-spacing: 0.6px;
 }
 
 .dash-logout-btn {
   background: transparent;
-  border: 1.5px solid #3a4558;
+  border: 1.5px solid var(--line-on-ink);
   color: #fff;
   padding: 9px 18px;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 13px;
   font-weight: 600;
   transition: all 0.15s ease;
 }
 
 .dash-logout-btn:hover {
-  background: #f59e0b;
-  border-color: #f59e0b;
-  color: #0f1729;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.dash-btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--steel-line);
+  color: var(--ink);
+}
+
+.dash-btn-outline:hover {
+  background: var(--canvas-alt);
+  border-color: var(--steel-line);
 }
 
 .dash-content {
-  padding: 56px 48px;
+  padding: 52px 48px;
   max-width: 960px;
   margin: 0 auto;
 }
 
 .dash-welcome-eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #f59e0b;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--brand);
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 
 .dash-welcome-title {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
-  color: #0f1729;
+  color: var(--ink);
   letter-spacing: -0.4px;
 }
 
 .dash-welcome-subtitle {
-  color: #6b7280;
+  color: var(--steel);
   margin-top: 8px;
-  font-size: 15px;
+  font-size: 14.5px;
 }
 
 .dash-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 30px;
-  margin-top: 36px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 12px rgba(0,0,0,0.04);
-  border-left: 4px solid #f59e0b;
+  background: var(--paper-card);
+  border: 1px solid var(--steel-line);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 32px;
+  box-shadow: var(--shadow-card);
+  border-left: 3px solid var(--brand);
 }
 
 .dash-card-title {
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 15.5px;
   font-weight: 700;
-  color: #0f1729;
+  color: var(--ink);
   margin-bottom: 10px;
 }
 
 .dash-card-text {
-  color: #6b7280;
-  font-size: 14.5px;
+  color: var(--steel);
+  font-size: 14px;
   line-height: 1.7;
 }
 
 .dash-info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
   margin-top: 24px;
 }
 
 .dash-info-box {
-  background: #fafbfc;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 18px;
+  background: var(--paper-card);
+  border: 1px solid var(--steel-line);
+  border-radius: var(--radius);
+  padding: 16px;
 }
 
 .dash-info-label {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #9ca3af;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--steel);
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
 }
 
 .dash-info-value {
-  font-size: 15px;
-  font-weight: 600;
-  color: #0f1729;
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
   margin-top: 6px;
 }
 
 @media (max-width: 700px) {
   .dash-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.profile-field .dash-info-label {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 500px) {
+  .profile-grid {
     grid-template-columns: 1fr;
   }
 }
