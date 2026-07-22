@@ -1,7 +1,5 @@
 package edu.cit.Macopia.StockManagement_System.common.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.cit.Macopia.StockManagement_System.common.dto.ErrorResponse;
 import edu.cit.Macopia.StockManagement_System.common.security.CustomUserDetailsService;
 import edu.cit.Macopia.StockManagement_System.common.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +30,6 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -51,6 +48,14 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
+    private String errorJson(int status, String message) {
+        String escapedMessage = message.replace("\"", "\\\"");
+        return "{\"status\":" + status
+                + ",\"message\":\"" + escapedMessage + "\""
+                + ",\"fieldErrors\":null"
+                + ",\"timestamp\":\"" + LocalDateTime.now() + "\"}";
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -67,24 +72,18 @@ public class SecurityConfig {
                         .authenticationEntryPoint((request, response, authException) -> {
                             response.setStatus(HttpStatus.UNAUTHORIZED.value());
                             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                            ErrorResponse body = new ErrorResponse(
+                            response.getWriter().write(errorJson(
                                     HttpStatus.UNAUTHORIZED.value(),
-                                    "Authentication required. Please log in.",
-                                    null,
-                                    LocalDateTime.now()
-                            );
-                            response.getWriter().write(objectMapper.writeValueAsString(body));
+                                    "Authentication required. Please log in."
+                            ));
                         })
                         .accessDeniedHandler((request, response, accessDeniedException) -> {
                             response.setStatus(HttpStatus.FORBIDDEN.value());
                             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                            ErrorResponse body = new ErrorResponse(
+                            response.getWriter().write(errorJson(
                                     HttpStatus.FORBIDDEN.value(),
-                                    "You don't have permission to perform this action.",
-                                    null,
-                                    LocalDateTime.now()
-                            );
-                            response.getWriter().write(objectMapper.writeValueAsString(body));
+                                    "You don't have permission to perform this action."
+                            ));
                         })
                 );
         return http.build();
