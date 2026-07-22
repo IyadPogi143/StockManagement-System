@@ -17,7 +17,9 @@ function Login() {
     setError("");
     try {
       const res = await api.post("/auth/login", form);
-      localStorage.setItem("user", JSON.stringify(res.data));
+      sessionStorage.setItem("user", JSON.stringify(res.data));
+      sessionStorage.setItem("accessToken", res.data.accessToken);
+      sessionStorage.setItem("refreshToken", res.data.refreshToken);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data || "Login failed");
@@ -30,8 +32,8 @@ function Login() {
         <div className="brand-logo">
           <div className="brand-logo-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="#0f1729" strokeWidth="1.8" strokeLinejoin="round"/>
-              <path d="M3 7l9 5 9-5M12 12v10" stroke="#0f1729" strokeWidth="1.8" strokeLinejoin="round"/>
+              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="#1b1f27" strokeWidth="1.8" strokeLinejoin="round"/>
+              <path d="M3 7l9 5 9-5M12 12v10" stroke="#1b1f27" strokeWidth="1.8" strokeLinejoin="round"/>
             </svg>
           </div>
           <span className="brand-logo-text">MACOPIA</span>
