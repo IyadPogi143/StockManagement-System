@@ -3,6 +3,7 @@ package edu.cit.Macopia.StockManagement_System.features.productrequests.listprod
 import edu.cit.Macopia.StockManagement_System.common.dto.ProductChangeRequestView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +16,7 @@ public class ListProductRequestsController {
 
     private final ListProductRequestsService listProductRequestsService;
 
-    // Intended for Administrators (frontend-gated, same known limitation as
-    // other endpoints: no server-side role check yet).
+    @PreAuthorize("hasRole('ADMINISTRATOR')")
     @GetMapping
     public ResponseEntity<List<ProductChangeRequestView>> listRequests(
             @RequestParam(required = false) String status

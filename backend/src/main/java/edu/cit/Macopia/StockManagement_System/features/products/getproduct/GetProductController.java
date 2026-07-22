@@ -3,6 +3,7 @@ package edu.cit.Macopia.StockManagement_System.features.products.getproduct;
 import edu.cit.Macopia.StockManagement_System.common.dto.ProductView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ public class GetProductController {
 
     private final GetProductService getProductService;
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/{sku}")
     public ResponseEntity<ProductView> getProduct(@PathVariable String sku) {
         return ResponseEntity.ok(getProductService.getProduct(sku));
