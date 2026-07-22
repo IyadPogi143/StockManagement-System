@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ public class SubmitProductRequestController {
 
     // Reachable by both roles. Every add/edit/delete of a product goes through
     // here first and sits as PENDING until an Administrator reviews it.
+    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public ResponseEntity<ProductChangeRequestView> submitRequest(@Valid @RequestBody SubmitProductRequestRequest request) {
         ProductChangeRequestView created = submitProductRequestService.submitRequest(request);

@@ -4,6 +4,7 @@ import edu.cit.Macopia.StockManagement_System.common.dto.ProductChangeRequestVie
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +15,7 @@ public class ReviewProductRequestController {
 
     private final ReviewProductRequestService reviewProductRequestService;
 
-    // Intended for Administrators only (frontend-gated).
+    @PreAuthorize("hasRole('ADMINISTRATOR')")
     @PatchMapping("/{requestId}/review")
     public ResponseEntity<ProductChangeRequestView> review(
             @PathVariable Long requestId,

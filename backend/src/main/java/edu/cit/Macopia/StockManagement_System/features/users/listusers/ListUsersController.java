@@ -3,6 +3,7 @@ package edu.cit.Macopia.StockManagement_System.features.users.listusers;
 import edu.cit.Macopia.StockManagement_System.common.dto.UserSummaryView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +19,7 @@ public class ListUsersController {
 
     private final ListUsersService listUsersService;
 
-    // KNOWN LIMITATION (documented, not fixed per current scope): no server-side
-    // authorization check yet. The AdminDashboard.jsx role check on the frontend
-    // is a UX gate only, not real security.
+    @PreAuthorize("hasRole('ADMINISTRATOR')")
     @GetMapping
     public ResponseEntity<List<UserSummaryView>> getAllUsers() {
         return ResponseEntity.ok(listUsersService.listUsers());

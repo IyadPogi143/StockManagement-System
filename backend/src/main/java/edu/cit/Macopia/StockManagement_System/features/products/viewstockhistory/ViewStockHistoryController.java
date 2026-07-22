@@ -3,6 +3,7 @@ package edu.cit.Macopia.StockManagement_System.features.products.viewstockhistor
 import edu.cit.Macopia.StockManagement_System.common.dto.StockTransactionView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ public class ViewStockHistoryController {
 
     private final ViewStockHistoryService viewStockHistoryService;
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/{sku}/transactions")
     public ResponseEntity<List<StockTransactionView>> getTransactionHistory(@PathVariable String sku) {
         return ResponseEntity.ok(viewStockHistoryService.getHistoryForProduct(sku));

@@ -3,6 +3,7 @@ package edu.cit.Macopia.StockManagement_System.features.productrequests.listmypr
 import edu.cit.Macopia.StockManagement_System.common.dto.ProductChangeRequestView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class ListMyProductRequestsController {
 
     private final ListMyProductRequestsService listMyProductRequestsService;
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping
     public ResponseEntity<List<ProductChangeRequestView>> listMyRequests(@RequestParam Long userId) {
         return ResponseEntity.ok(listMyProductRequestsService.listMyRequests(userId));
