@@ -57,7 +57,7 @@ function ReviewRequests() {
   if (!user || user.role !== "ADMINISTRATOR") return null;
 
   const handleLogout = () => {
-    sessionStorage.removeItem("user");
+    sessionStorage.clear();
     navigate("/login");
   };
 

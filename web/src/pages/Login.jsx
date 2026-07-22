@@ -18,6 +18,8 @@ function Login() {
     try {
       const res = await api.post("/auth/login", form);
       sessionStorage.setItem("user", JSON.stringify(res.data));
+      sessionStorage.setItem("accessToken", res.data.accessToken);
+      sessionStorage.setItem("refreshToken", res.data.refreshToken);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data || "Login failed");

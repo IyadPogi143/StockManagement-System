@@ -11,7 +11,7 @@ function fullName(u) {
 function formatDate(d) {
   return d
     ? new Date(d).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
-    : "—";
+    : "-";
 }
 
 function Dashboard() {
@@ -21,7 +21,7 @@ function Dashboard() {
   const [users, setUsers] = useState([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
   const [usersError, setUsersError] = useState("");
-  const [selectedUser, setSelectedUser] = useState(null); // for the profile modal
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     if (!user || user.role !== "ADMINISTRATOR") return;
@@ -34,7 +34,7 @@ function Dashboard() {
   }, []);
 
   const handleLogout = () => {
-    sessionStorage.removeItem("user");
+    sessionStorage.clear();
     navigate("/login");
   };
 
@@ -42,7 +42,7 @@ function Dashboard() {
     return (
       <div className="dash-wrapper">
         <div className="dash-content">
-          <p>You're not logged in.</p>
+          <p>You are not logged in.</p>
         </div>
       </div>
     );
@@ -69,7 +69,7 @@ function Dashboard() {
       <div className="dash-content">
         <div className="dash-welcome-eyebrow">Dashboard</div>
         <h1 className="dash-welcome-title">Welcome, {user.firstName} {user.lastName}</h1>
-        <p className="dash-welcome-subtitle">Here's your current access overview.</p>
+        <p className="dash-welcome-subtitle">Here is your current access overview.</p>
 
         <div className="dash-info-grid">
           <div className="dash-info-box">
@@ -119,7 +119,7 @@ function Dashboard() {
                 </p>
               </div>
 
-              {loadingUsers && <p className="admin-status-text">Loading users…</p>}
+              {loadingUsers && <p className="admin-status-text">Loading users...</p>}
               {usersError && <p className="admin-status-text admin-error-text">{usersError}</p>}
 
               {!loadingUsers && !usersError && (
