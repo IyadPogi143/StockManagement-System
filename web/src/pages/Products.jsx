@@ -35,7 +35,7 @@ function Products() {
   }
 
   const handleLogout = () => {
-    sessionStorage.removeItem("user");
+    sessionStorage.clear();
     navigate("/login");
   };
 

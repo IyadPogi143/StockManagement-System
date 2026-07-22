@@ -32,17 +32,3 @@ build/
 ### VS Code ###
 .vscode/
 
-### Environment Files ###
-backend/.env
-.env
-
-### React ###
-web/node_modules/
-web/dist/
-
-### Logs ###
-*.log
-
-### OS Files ###
-.DS_Store
-Thumbs.db
